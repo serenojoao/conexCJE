@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{=T.accepted_language or 'en'}}"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <!-- www.phpied.com/conditional-comments-block-downloads/ -->
+    <!-- Always force latest IE rendering engine
+         (even in intranet) & Chrome Frame
+         Remove this if you use the .htaccess -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge{{=not request.is_local and ',chrome=1' or ''}}">
+    <!--  Mobile Viewport Fix
+          j.mp/mobileviewport & davidbcalhoun.com/2010/viewport-metatag
+          device-width: Occupy full width of the screen in its current orientation
+          initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
+          user-scalable = yes allows the user to zoom in -->
+    <title>{{=response.title or request.application}}</title>
+    <!-- http://dev.w3.org/html5/markup/meta.name.html -->
+    <meta name="application-name" content="{{=request.application}}">
+    <title>{{=response.title or request.application}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="{{=URL('static','css', args=['main.css'])}}" />
+    <!-- Speaking of Google, don't forget to set your site up:
+         http://google.com/webmasters -->
+    <meta name="google-site-verification" content="">
+    <!-- include stylesheets -->
+    <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
+    <!-- All JavaScript at the bottom, except for Modernizr which enables
+         HTML5 elements & feature detects -->
+    <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
+    <!-- Favicons -->
+    {{include 'web2py_ajax.html'}} <!-- this includes jquery.js, calendar.js/.css and web2py.js -->
+    {{block head}}{{end}}
+  </head>
+  <body class="is-preload">
+
+    <!-- Header -->
+      <header id="header">
+        <a class="logo" href="{{=URL('default','index')}}">Principal</a>
+        <nav>
+          <a href="#menu">Menu</a>
+        </nav>
+      </header>
+
+    <!-- Nav -->
+      <nav id="menu">
+        <ul class="links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="elements.html">Elements</a></li>
+          <li><a href="generic.html">Generic</a></li>
+        </ul>
+      </nav>
+
+    <!-- Banner -->
+      <section id="banner">
+        <div class="inner">
+          <h1>Sindfa</h1>
+          <div class="svg_container main_svg">{{=LOGO}}</div>
+          <p>Sindicato dos servidores públicos de Fátima/BA.</p>
+        </div>
+        <img src="{{=URL('static','images', args=['sindfa-bg.jpg'])}}"></img>
+      </section>
+
+{{include}}
+
+    <!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <div class="content">
+            <section>
+              <h3>Accumsan montes viverra</h3>
+              <p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
+            </section>
+            <section>
+              <h4>Sem turpis amet semper</h4>
+              <ul class="alt">
+                <li><a href="#">Dolor pulvinar sed etiam.</a></li>
+                <li><a href="#">Etiam vel lorem sed amet.</a></li>
+                <li><a href="#">Felis enim feugiat viverra.</a></li>
+                <li><a href="#">Dolor pulvinar magna etiam.</a></li>
+              </ul>
+            </section>
+            <section>
+              <h4>Magna sed ipsum</h4>
+              <ul class="plain">
+                <li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+                <li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+                <li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+                <li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+              </ul>
+            </section>
+          </div>
+          <div class="copyright">
+            &copy; Untitled. Photos <a href="https://unsplash.co">Unsplash</a>, Video <a href="https://coverr.co">Coverr</a>.
+          </div>
+        </div>
+      </footer>
+
+    <!-- Scripts -->
+      {{block javascript}}
+      {{end block}}
+      <script src="{{=URL('static','js', args=['jquery.min.js'])}}"></script>
+      <script src="{{=URL('static','js', args=['browser.min.js'])}}"></script>
+      <script src="{{=URL('static','js', args=['breakpoints.min.js'])}}"></script>
+      <script src="{{=URL('static','js', args=['util.js'])}}"></script>
+      <script src="{{=URL('static','js', args=['main.js'])}}"></script>
+
+  </body>
+</html>

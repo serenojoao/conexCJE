@@ -1,0 +1,128 @@
+{{extend 'layout.html'}}
+{{block head}}
+<style type="text/css">
+  .logo_principal_principal {
+    width: 100%;
+    height: 10px;
+    display: table;
+    background-image: url('{{=URL("static","images", args=["background.jpg"])}}');
+    transition: height 1s ease-in; 
+}
+</style>
+{{end}}
+    <!-- Highlights -->
+{{block principal}}
+<div class="logo_principal_principal">
+        <div class="coluna_tabela_logo">
+          <div class="celuar_tabela">
+            <div class='conteudo_tabela'>
+              <div class="logo_svg_principal">
+                <div class="card-img-top">{{=LOGO_LOJA}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
+{{end}}
+      <h1 class='subititulo_principal'>Conheça nossas ofertas</h1>
+
+      {{=html}}
+      <div id="visualizador_imagem">
+        <div class='visualizador_imagem_container'>
+          <div class='botaofechar_vizualizador' id='botaofechar_vizualizador'>
+              <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="50px" height="50px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 50 50"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <g>
+              <metadata/>
+              <path class="plugin_phanterimages-icone-fechar plugin_phanterimages-cinza" d="M26.0257 2.4c12.8518,0 23.2741,10.4224 23.2741,23.2741 0,12.8518 -10.4224,23.2741 -23.2741,23.2741 -12.8518,0 -23.2741,-10.4224 -23.2741,-23.2741 0,-12.8518 10.4224,-23.2741 23.2741,-23.2741zm-17.0163 31.4963l8.45663 -8.45665 -8.45663 -8.45665 8.2079 -8.2079 8.45665 8.45663 8.45665 -8.45663 8.2079 8.2079 -8.45663 8.45665 8.45663 8.45665 -8.2079 8.2079 -8.45665 -8.45662 -8.45665 8.45662 -8.2079 -8.2079z"/>
+              <path class="plugin_phanterimages-icone-fechar plugin_phanterimages-branco plugin_phanterimages-botao-icone" d="M25.5276 2.2535c12.8518,0 23.2741,10.4224 23.2741,23.2741 0,12.8518 -10.4223,23.2741 -23.2741,23.2741 -12.8518,0 -23.2741,-10.4223 -23.2741,-23.2741 0,-12.8518 10.4224,-23.2741 23.2741,-23.2741zm-17.0163 31.4963l8.45663 -8.45665 -8.45663 -8.45665 8.2079 -8.2079 8.45665 8.45663 8.45665 -8.45663 8.2079 8.2079 -8.45662 8.45665 8.45662 8.45665 -8.2079 8.2079 -8.45665 -8.45663 -8.45665 8.45663 -8.2079 -8.2079z"/>
+              </g>
+              </svg>
+          </div>
+          <div class="coluna_tabela">
+            <div class="celuar_tabela">
+              <div class='conteudo_tabela' id='conteudo_visulizador_tabela'>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h1 class='subititulo_principal'>Venha nos visitar</h1>
+      <div class="row">
+        <div class="col-12">
+          <div id="mapa_principal">
+          </div>
+        </div>
+      </div>
+      
+
+{{block js}}
+    <script type="text/javascript">
+      $("#botaofechar_vizualizador").on("click", function(){
+        $("#visualizador_imagem").fadeOut();
+      });
+      $(".imagem_para_visualizar").on("click", function(){
+        var url = $(this).attr("data-url_imagem")
+        $("#conteudo_visulizador_tabela").html('<img alt="" class="card-img-top" src="'+url+'">')
+        $("#visualizador_imagem").fadeIn();
+      })
+      $(document).ready(function(){
+        function adjustMainBackground(){
+          var viewportHeight = $(window).height();
+          $(".logo_principal_principal").css("height", viewportHeight); 
+        }
+        adjustMainBackground()
+      });
+    </script>
+    <script>
+      function initMap() {
+        -10.594165, -38.210494
+        var default_coor = {lat: -10.594165, lng:-38.210494};
+
+        var map = new google.maps.Map(document.getElementById('mapa_principal'), {
+          zoom: 18,
+          center: default_coor,
+          mapTypeId: 'hybrid'
+
+        });
+        var marker = new google.maps.Marker({
+            position: default_coor, 
+            map: map,
+            label:"JE Informática e Variedades",
+        });
+        var markers = [];       
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfCe6BFYtmO_kojKp7h3l-dBiLrGy99TA&libraries=places&callback=initMap">
+    </script>
+{{end}}

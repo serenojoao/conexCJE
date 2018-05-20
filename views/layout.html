@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ConexCJE - JE Infomática e Variedades</title>
+
+    <!-- Bootstrap core CSS -->
+
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{{=URL('static','_1.0.0/plugin_phantersqllistas/css/plugin_phantersqllistas.css')}}"/>
+    <link rel="stylesheet" href="{{=URL('static','css/bootstrap.min.css')}}"/>
+    <link rel="stylesheet" href="{{=URL('static','_1.0.0/css', args=['main.css'])}}" />
+    {{include 'web2py_ajax.html'}} 
+
+  </head>
+
+  <body>
+    <div class="toast">{{=response.flash}}</div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="{{=URL('default', 'index')}}">
+          <div class="container_logo_main">
+          {{=LOGO_LOJA}}
+          </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{=URL('default', 'index')}}">Principal
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{=URL('default', 'sobre_nos')}}">Sobre nós</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{=URL('servicos', 'index')}}">Serviços</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{=URL('default', 'contato')}}">Contato</a>
+            </li>
+          </ul>
+        {{if 'auth' in globals():}}
+        <ul class="navbar-nav navbar-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{if auth.user:}}{{=auth.user.first_name}}{{else:}}Login{{pass}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              {{if auth.user:}}
+              <a class="dropdown-item" href="{{=URL('default','user/profile')}}">{{=T('Profile')}}</a>
+              <a class="dropdown-item" href="{{=URL('default','user/change_password')}}">{{=T('Change Password')}}</a>
+              <a class="dropdown-item" href="{{=URL('default','user/logout')}}">{{=T('Logout')}}</a>
+              {{else:}}
+              <a class="dropdown-item" href="{{=URL('default','user/login')}}">{{=T('Login')}}</a>
+              <a class="dropdown-item" href="{{=URL('default','user/register')}}">{{=T('Sign up')}}</a>
+              <a class="dropdown-item" href="{{=URL('default','user/request_password')}}">{{=T('Lost Password')}}</a>
+              {{pass}}
+            </div>
+          </li>
+        </ul>
+        {{pass}} 
+        </div>
+      </div>
+    </nav>
+    {{block principal}}
+    {{end}}
+    <!-- Page Content -->
+    {{if request.function=='user':}}
+      <br>
+      <br>
+      <div class="header_pagina">
+
+        <div class="comandos_pagina_container">
+        <div class="comandos_main_container"><a href="/conexcje/default/index" title="voltar"><div class="botao_menu_pagina">
+      <svg class="botao_opcoes" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1004px" height="1004px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 1004 1004" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g>
+        <path class="fil0" d="M51.419 312.591c1.97847,-79.7767 316.078,-236.56 370.425,-258.867 19.2992,-7.92097 32.995,-11.0511 37.8036,-7.01146 21.0994,17.7212 -52.1312,148.481 -62.3519,171.762 212.657,43.9965 546.645,121.496 528.227,407.052 -13.365,207.282 -241.561,332.268 -430.089,342.581 -10.3436,0.565784 -23.1711,-0.596494 -29.9038,-8.46904 -3.82229,-4.46957 5.6413,-10.9353 10.5881,-14.1174 121.343,-78.0651 341.649,-178.576 252.937,-363.524 -55.5141,-115.733 -243.703,-136.836 -355.288,-134.116 7.25833,29.6239 64.2501,189.228 37.6465,208.232 -21.5281,15.3754 -263.759,-199.009 -301.737,-240.71 -35.2758,-38.732 -58.9466,-75.0354 -58.2568,-102.814z"></path>
+        <path class="fil1" d="M41.7062 302.878c1.97847,-79.7767 316.078,-236.56 370.425,-258.867 19.2992,-7.92097 32.995,-11.0511 37.8036,-7.01146 21.0994,17.7212 -52.1312,148.481 -62.3519,171.762 212.657,43.9965 546.645,121.496 528.227,407.052 -13.365,207.282 -241.561,332.268 -430.089,342.581 -10.3436,0.565784 -23.1711,-0.596494 -29.9038,-8.46904 -3.82229,-4.46957 5.6413,-10.9353 10.5881,-14.1174 121.343,-78.0651 341.649,-178.576 252.937,-363.524 -55.5141,-115.733 -243.703,-136.836 -355.288,-134.116 7.25833,29.6239 64.2501,189.228 37.6465,208.232 -21.5281,15.3754 -263.759,-199.009 -301.737,-240.71 -35.2758,-38.732 -58.9466,-75.0354 -58.2568,-102.814z"></path>
+      </g>
+      </svg>
+      </div></a></div>
+        </div>
+      </div>
+          {{include}}
+    {{else:}}
+
+    <div class="container main_container">
+
+      <!-- Page Heading -->
+
+      {{include}}
+
+    </div>
+    {{pass}}
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+
+        <div class='conteudo_footer'>
+          <div class="container_logo_footer">
+            {{=LOGO}}
+          </div>
+          <div class='copyright_footer'>Copyright &copy; 2018</div>
+        </div>
+
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{=URL('static','js', args=['jquery.min.js'])}}"></script>
+    <script src="{{=URL('static','js', args=['bootstrap.bundle.min.js'])}}"></script>
+    
+    {{if response.flash:}}
+    <script type="text/javascript">
+      $(".toast").slideToggle();
+      $(".toast").on("click", function(){
+        $(this).fadeOut();
+      })
+    </script>
+    {{pass}}
+
+  </body>
+
+</html>

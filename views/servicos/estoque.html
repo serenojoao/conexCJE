@@ -1,0 +1,165 @@
+{{extend 'layout.html'}}
+<div class="header_pagina">
+  <h1 class="titulo_pagina">{{=titulo}}</h1>
+  <h2 class="subtitulo_pagina">{{=subtitulo}}</h2>
+  <div class="comandos_pagina_container">
+  {{=html_comandos}}
+  </div>
+</div>
+<hr>
+{{if request.args(0)=='lancar' and request.args(1) and request.args(2):}}
+  {{=html}}
+
+  {{=form.custom.begin}}
+  <div class="row form-group">
+    <div class="col-2">
+      <label for="no_table_quantidade">{{=form.custom.label['quantidade']}}</label>
+      {{=form.custom.widget.quantidade}}
+    </div>
+    <div class="col-1">
+      +
+    </div>
+    <div class="col-2">
+      <label for="no_table_tem_atualmente">Tem atualmente</label>
+      <fieldset disabled>
+        <input class="double form-control" id="no_table_tem_atualmente" name="tem_atualmente" value="{{=valor_tem_atualmente}}" type="text">
+      </fieldset>
+    </div>
+    <div class="col-1">
+      =
+    </div>
+    <div class="col-3">
+      <label for="no_table_quantidade_total">{{=form.custom.label['quantidade_total']}}</label>
+      <div style="display: none">{{=form.custom.widget.quantidade_total}}</div>
+      <fieldset disabled>
+        <input class="double form-control" id="fake_quantidade" name="fake_quantidade" value="{{=valor_quantidade_total}}" type="text">
+      </fieldset>
+    </div>
+    <div class="col-3">
+      <label for="no_table_unidade">{{=form.custom.label['unidade']}}</label>
+      {{=form.custom.widget.unidade}}
+    </div>
+  </div>
+   <div class="row form-group escondido" id="nova_unidade">
+    <div class="col-12">
+      <label for="no_table_nova_unidade">{{=form.custom.label['nova_unidade']}}</label>
+      {{=form.custom.widget.nova_unidade}}
+    </div>  
+  </div>
+   <div class="row form-group">
+    <div class="col-3">
+      <label for="no_table_preco_custo">{{=form.custom.label['preco_custo']}}</label>
+      {{=form.custom.widget.preco_custo}}
+    </div>
+    <div class="col-3">
+      <label for="no_table_preco_custo_max">Maior Preço de custo</label>
+      <fieldset disabled>
+        <input class="double form-control" id="no_table_preco_custo_max" name="preco_custo_max" value="{{=valor_preco_custo_max}}" type="text">
+      </fieldset>
+    </div>
+    <div class="col-3">
+      <label for="no_table_preco_custo_min">Menor Preço de custo</label>
+      <fieldset disabled>
+        <input class="double form-control" id="no_table_preco_custo_min" name="preco_custo_min" value="{{=valor_preco_custo_min}}" type="text">
+      </fieldset>
+    </div>
+    <div class="col-3">
+      <label for="no_table_preco_custo_medio">Preço de custo médio</label>
+      <fieldset disabled>
+        <input class="double form-control" id="no_table_preco_custo_medio" name="preco_custo_medio" value="{{=valor_preco_custo_medio}}" type="text">
+      </fieldset>
+    </div>
+  </div>
+   <div class="row form-group">
+    <div class="col-4">
+      <label for="no_table_preco_atual">Preço Atual</label>
+      <fieldset disabled>
+        <input class="double form-control" id="no_table_preco_atual" name="preco_atual" value="{{=valor_preco_atual}}" type="text">
+      </fieldset>
+    </div>
+    <div class="col-4">
+      <label for="no_table_preco_sugerido">Preço Sugerido</label>
+      <fieldset disabled>
+        <input class="double form-control" id="no_table_preco_sugerido" name="preco_sugerido" value="{{=valor_preco_sugerido}}" type="text">
+      </fieldset>
+    </div>
+    <div class="col-4">
+      <label for="produtos_descricao">{{=form.custom.label['preco_manual']}}</label>
+      {{=form.custom.widget.preco_manual}}
+    </div>
+  </div>
+
+  <div class="botao_submit">
+    {{=form.custom.submit}}
+  </div>
+
+  {{=form.custom.end}}
+
+  <script type="text/javascript">
+    function quantidade_total(){
+      var quantidade=$("#no_table_quantidade").val();
+      var tem_atualmente=parseFloat($("#no_table_tem_atualmente").val());
+      var valor=0.0
+      if(quantidade!=""){
+        valor=parseFloat(quantidade)+tem_atualmente
+      }
+      if (valor!=undefined){
+        return valor.toFixed(2)  
+      } else {
+        return 0.0
+      }
+    }
+    function preco_sugerido(){
+      var preco_custo=$("#no_table_preco_custo").val();
+      var preco_medio=parseFloat($("#no_table_preco_custo_medio").val());
+      var valor=0.0;
+      if (preco_custo!=""){
+        var valor=((parseFloat(preco_custo)+preco_medio)/2.0)
+        if (parseFloat(preco_custo)>preco_medio){
+          valor=parseFloat(preco_custo);
+        }
+        valor=valor+(valor*{{=MODELS_PORCENTAGEM_DE_LUCRO}})
+      }
+      if (valor!=undefined){
+        return valor.toFixed(2) 
+      } else {
+        return 0.0
+      }
+    }
+    function unidade(){
+      var unidade=$("#no_table_unidade option:selected").val()
+      if (unidade=="Nova Unidade"){
+        $("#nova_unidade").removeClass("escondido");
+      } else{
+        $("#nova_unidade").addClass("escondido");
+      }
+    }
+
+    $(document).ready(function(){
+      $("#no_table_unidade").on("change", function(){
+        unidade()
+      });
+      $("#no_table_quantidade").on("keyup", function(){
+        var valor_puro=$(this).val()
+        valor_puro=valor_puro.replace(",",".");
+        $(this).val(valor_puro)
+        var valor=quantidade_total();
+        $("#fake_quantidade").val(valor)
+        $("#no_table_quantidade_total").val(valor)
+      });
+      $("#no_table_preco_custo").on("keyup", function(){
+        var valor_puro=$(this).val()
+        valor_puro=valor_puro.replace(",",".");
+        $(this).val(valor_puro)
+        var valor=preco_sugerido()
+        $("#no_table_preco_sugerido").val(valor)
+      });
+      unidade();
+    })
+  </script>
+{{else:}}
+  {{=html}}
+{{pass}}
+
+
+
