@@ -1,0 +1,318 @@
+/*!
+ * Start Bootstrap - 4 Col Portfolio (https://startbootstrap.com/template-overviews/4-col-portfolio)
+ * Copyright 2013-2018 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-4-col-portfolio/blob/master/LICENSE)
+ */
+
+body {
+  padding-top: 54px;
+}
+.container_logo_footer {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.copyright_footer {
+
+    text-align: center;
+    width: 100%;
+    color: white;
+    font-size: 1.2rem;
+
+}
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.pagination {
+  margin-bottom: 30px;
+}
+.container_logo_main {
+    width: 170px;
+    height: 30px;
+}
+svg{width: 100%; height: auto;}
+#logo_conexcje .camada_base {fill:#1F1A17;fill-rule:nonzero}
+#logo_conexcje .camada_inferior {fill:#0093DD;fill-rule:nonzero;fill-opacity:0.501961}
+#logo_conexcje .camada_superior {fill:url(#id0);fill-rule:nonzero}
+
+.fil0 {fill:#838281}
+.fil1 {fill:#DEDEDD}
+
+#logo_loja .fil0 {fill:#1F1A17}
+#logo_loja .fil1 {fill:url(#idlogoloja0)}
+#logo_loja .fil2 {fill:url(#idlogoloja1);fill-rule:nonzero}
+
+.container_logo_main #logo_loja .fil0 {fill:grey}
+
+.botao_svg {
+    width: 100%;
+    height: auto;
+}
+.botao_svg:hover .fil1{
+	fill:orange;
+    
+}
+.botao_menu_pagina {
+    width: 40px;
+    cursor: pointer;
+}
+.botao_menu_pagina svg .fil0{
+  fill:black;
+}
+.botao_menu_pagina svg .fil1{
+  fill:#B9B9B9;
+}
+.botao_menu_pagina:hover svg .fil1{
+  fill:orange;
+}
+.toast {
+    display: none;
+    position: fixed;
+    right: 14px;
+    background-color: orange;
+    padding: 10px;
+    border-radius: 10px;
+    height: 50px;
+    top: 63px;
+}
+.comandos_container.dropleft {
+    position: absolute;
+    right: 6px;
+    cursor: pointer;
+}
+.dropleft .dropdown-toggle::before { content: none }
+.titulo_pagina {
+
+    padding: 20px 0 0 0;
+    text-align: center;
+    text-transform: uppercase;
+
+}
+.subtitulo_pagina {
+
+    text-align: center;
+    font-size: 1rem;
+    color: #92743d;
+    font-style: italic;
+
+}
+.comandos_pagina_container {
+    position: fixed;
+    left: 16px;
+    top: 68px;
+}
+.container.main_container {
+    min-height: 430px;
+    padding-bottom: 20px;
+}
+.item_lista_container.row {
+    position: relative;
+    padding-right: 20px;
+}
+.cabecalho_lista_container.row {
+    position: relative;
+    padding-right: 20px;
+}
+.list-group-item.cabecalho {
+
+    background-color: #cbefc6;
+    font-weight: bold;
+
+}
+.botao_submit{
+  text-align: center;
+}
+.plugin_phanterimages_principal {
+    z-index: 2003 !important;
+}
+.nav-link {
+    text-align: center;
+}
+.row.linha_escolha:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+.phantersqllistas-listas_linha_pesonalizada {
+    background-color: #d1e7e9;
+    
+}
+.phantersqllistas-listas_linha_pesonalizada:hover {
+    background-color: #8fd290;
+    color: white;
+}
+.phantersqllistas-listas_linha_pesonalizada:hover .row.linha_escolha{
+    color: white;
+}
+.card_dados {
+
+    padding: 10px;
+    box-shadow: 1px 1px 11px black;
+
+}
+.padding_20 {
+    padding: 0px 0 30px 0;
+}
+.titulo_card{
+    text-align: center;
+    color: #959595;
+}
+fieldset[disabled=""] > input {
+    background-color: #ddd !important;
+}
+.error_wrapper .error {
+    color: red;
+}
+.row.form-group.escondido{
+    display: none
+}
+.preco {
+    text-align: center;
+    font-size: 2rem;
+}
+.card-rotulo {
+
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: orange;
+    margin-bottom: 0;
+    padding: 0;
+
+}
+.coluna_tabela {
+    display: table-row;
+}
+.coluna_tabela_logo {
+    display: table-row;
+    background-color: rgba(6, 32, 14, 0.5);
+}
+.logo_principal_principal {
+    width: 100%;
+    display: table;
+}
+.subititulo_principal{
+    color: orange;
+    text-align: center;
+
+}
+.celuar_tabela {
+    display: table-cell;
+    vertical-align: middle;
+}
+#conteudo_visulizador_tabela {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+}
+.botaofechar_vizualizador {
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+#visualizador_imagem{
+    display: none;
+}
+.logo_svg_principal{
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.visualizador_imagem_container{
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.79);
+    z-index: 2000;
+    display: table;
+}
+.card-title:hover a{
+    text-decoration: none;
+}
+.card-title{
+    text-align: center;
+}
+.card-body {
+
+    background: #d8f3d8;
+
+}
+.avisos{
+    text-align: center;
+    color:orange;
+    padding: 20px;
+}
+#web2py_user_form {
+    width: 100% !important;
+    max-width: none !important;
+    flex: 100% !important;
+}
+#web2py_user_form .col-sm-9 {
+    width: 100% !important;
+    max-width: none !important;
+    flex: 100% !important;
+}
+#web2py_user_form. form-control-label .col-sm-3{
+    width: 100% !important;
+    max-width: none !important;
+    flex: 100% !important;
+}
+#submit_record__row{
+    text-align: center;
+}
+#submit_record__row button {
+    margin-left: 15px;
+    background-color: #d8cfcf;
+}
+.container_formulario_generico .col-sm-9,
+.container_formulario_generico form-control-label .col-sm-3
+ {
+    width: 100% !important;
+    max-width: none !important;
+    flex: 100% !important;
+ }
+h2{text-align: center;}
+#mapa_principal {
+    height: 400px;
+}
+.titulo_informativo {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: grey
+}
+
+.icone_tipo_venda {
+
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+a.link_sem_decorato div.titulo_informativo{
+    color: grey !important;
+}
+.link_sem_decorator:hover {
+
+    text-decoration: none;
+    color: orange;
+
+}
+.link_sem_decorator:hover .titulo_informativo{
+
+    text-decoration: none;
+    color: orange;
+
+}
