@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import plugin_phantersqllistas.phantersqllistas
+import em_reais
 reload(plugin_phantersqllistas.phantersqllistas)
 from plugin_phantersqllistas.phantersqllistas import PhanterSqlListas
 
@@ -33,5 +34,9 @@ MODELS_PHANTERSQLLISTAS_FUNCIONARIOS.addMenuItem(lambda row: A("Editar", _href=U
 MODELS_PHANTERSQLLISTAS_FUNCIONARIOS.urlAJAX(URL('plugin_phantersqllistas', 'echo_phantersqllistas_funcionarios'))
 
 MODELS_PHANTERSQLLISTAS_CAIXA_CLIENTES=PhanterSqlListas(db, db.clientes, searchfield="nome", fields=[['nome','col-6'],['cpf','col-3'],['email','col-3']])
-MODELS_PHANTERSQLLISTAS_CAIXA_CLIENTES.personalizarLinha(lambda row: A(DIV(row['nome'], _class="tfield col-6"), DIV(row['cpf'], _class="tfield col-3"), DIV(row['email'], _class="tfield col-3"), _href=URL("servicos", "caixa", args=["vender", "cliente", row.id]), _class="row linha_escolha"))
+MODELS_PHANTERSQLLISTAS_CAIXA_CLIENTES.personalizarLinha(lambda row: A(DIV(row['nome'], _class="tfield col-6"), DIV(row['cpf'], _class="tfield col-3"), DIV(row['email'], _class="tfield col-3"), _href=URL("servicos", "pdv", args=["cliente", row.id]), _class="row linha_escolha"))
 MODELS_PHANTERSQLLISTAS_CAIXA_CLIENTES.urlAJAX(URL('plugin_phantersqllistas', 'echo_phantersqllistas_caixa_clientes'))
+
+MODELS_PHANTERSQLLISTAS_PDV_PRODUTOS=PhanterSqlListas(db, db.produtos, searchfield="produto", fields=[['cod_barra','col-3'],['produto','col-3'],['descricao','col-3'],['preco_final','col-3']])
+MODELS_PHANTERSQLLISTAS_PDV_PRODUTOS.personalizarLinha(lambda row: A(DIV(row['cod_barra'], _class="tfield col-3"), DIV(row['produto'], _class="tfield col-3"), DIV(row['descricao'], _class="tfield col-3"), DIV(em_reais.em_reais(row['preco_final']), _class="tfield col-3"), _href="#", _class="row linha_escolha", _onclick="adc_cod_barra(\"%s\", \"%s\")" %(row['cod_barra'], URL('default', 'download', args=[db.produtos[row['id']].id_imagem.imagem]))))
+MODELS_PHANTERSQLLISTAS_PDV_PRODUTOS.urlAJAX(URL('plugin_phantersqllistas', 'echo_phantersqllistas_pdv_produtos'))

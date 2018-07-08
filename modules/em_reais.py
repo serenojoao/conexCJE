@@ -22,4 +22,4 @@ def em_reais(numero):
         except:
             raise "O valor tem que ser um número válido"
 if __name__ == '__main__':
-    print em_reais(100000000000.60)
+    print (em_reais(100000000000.60))

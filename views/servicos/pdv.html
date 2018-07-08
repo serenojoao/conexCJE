@@ -1,0 +1,141 @@
+{{extend 'pdv.html'}}
+<div class="header_pagina">
+  <div class="comandos_pagina_container">
+  {{=html_comandos}}
+  </div>
+</div>
+<hr>
+{{=html}}
+<script type="text/javascript">
+	var url_ajax = "{{=URL('echos', 'pdv', args=['abrir-venda', auth.user.id, 'avulso' if request.args(0)=='avulso' else request.args(1)])}}"
+	console.log(url_ajax)
+	ajax(url_ajax,[], ":eval")
+</script>
+<div class="modal fade" id="pdvmodal" tabindex="-1" role="dialog" aria-labelledby="pdvmodalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pdvmodalTitle">LOCALIZAR PRODUTO</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{=MODELS_PHANTERSQLLISTAS_PDV_PRODUTOS}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="pdvmodal2" tabindex="-1" role="dialog" aria-labelledby="pdvmodal2Title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pdvmodal2Title">QUANTIDADE</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <div id="view_modal_item_pdv" style="background-size: 100% auto;"></div>
+          </div>
+          <div class="input_produto input-group col-12">
+            <input autocomplete="off" value="1.0" class="modal_quant_produto form-control" id="modal_quant_pdv" placeholder="Quantidade" style="width:100%" type="text">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" id="confirmar_modal" data-dismiss="modal">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="pdvmodal3" tabindex="-1" role="dialog" aria-labelledby="pdvmodal3Title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pdvmodal3Title">PAGAMENTO</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-3">
+            <div class="valor_total_pdv"><div>TOTAL(R$)</div><strong id="total_pdv_modal">0.0</strong></div>
+          </div>
+          <div class="col-3">
+            <div class="valor_total_pdv">DESCONTO(R$):</div>
+            <div class="input-group">
+              <input autocomplete="off" value="0.0" class="modal_quant_produto form-control" id="modal_desconto" placeholder="Desconto" style="width:100%" type="text" style="text-align: center;">
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="valor_total_pdv">VALOR PAGO(R$):</div>
+            <div class="input-group">
+              <input autocomplete="off" value="0.0" class="modal_quant_produto form-control" id="modal_total_pago" placeholder="Valor Pago" style="width:100%" type="text" style="text-align: center;">
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="valor_total_pdv"><div>TROCO(R$)</div><strong id="troco_pdv_modal">0.00</strong></div>
+          </div>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary disabled" id="confirmar_modal3" data-url-base="{{=URL('echos', 'pdv', args=['finalizar'])}}">Finalizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="pdvmodal4" tabindex="-1" role="dialog" aria-labelledby="pdvmodal4Title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pdvmodal4Title">IMPRIMIR NOTA NÃO FISCAL</h5>
+        <button type="button" class="close" id="fechar_janela_modal" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            Imprima sua nota não fiscal clicando em imprimir.
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="fechar_impressao_modal" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <a id="botao_imprimir_modal" href="#" target="_blank"><button type="button" class="btn btn-primary" id="confirmar_modal4">Imprimir</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modal_cancelar" tabindex="-1" role="dialog" aria-labelledby="modal_cancelarTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_cancelarTitle">CANCELAMENTO DE VENDA</h5>
+        <button type="button" class="close" id="fechar_janela_modal" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            Deseja cancelar toda a venda?
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="fechar_impressao_modal" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary" id="confirmar_cancelamento">Cancelar venda</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

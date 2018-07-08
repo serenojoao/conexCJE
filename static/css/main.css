@@ -315,4 +315,218 @@ a.link_sem_decorato div.titulo_informativo{
     text-decoration: none;
     color: orange;
 
+
+}
+.data_pdv {
+
+    color: orange;
+    padding: 8px;
+    font-weight: bold;
+
+}
+#progress_pdv {
+position: relative;
+height: 4px;
+width: 100%;
+background-color: #acece6;
+border-radius: 2px;
+background-clip: padding-box;
+margin: 0 0 1rem 0;
+overflow: hidden; }
+#progress_pdv .determinate {
+  position: absolute;
+  background-color: inherit;
+  top: 0;
+  bottom: 0;
+  background-color: #26a69a;
+  transition: width .3s linear; }
+#progress_pdv .indeterminate {
+  background-color: #26a69a; }
+  #progress_pdv .indeterminate:before {
+    content: '';
+    position: absolute;
+    background-color: inherit;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    will-change: left, right;
+    -webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+            animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite; }
+  #progress_pdv .indeterminate:after {
+    content: '';
+    position: absolute;
+    background-color: inherit;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    will-change: left, right;
+    -webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+            animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+    -webkit-animation-delay: 1.15s;
+            animation-delay: 1.15s; }
+
+.progress_pdv_container {
+
+    height: 8px;
+
+}
+.pdv_left_side {
+
+    width: 100%;
+    min-height: 647px;
+    border: 1px solid grey;
+    padding: 5px;
+    border-radius: 5px;
+    position: relative;
+
+}
+.row.inputs_pdv {
+
+    padding-bottom: 10px;
+
+}
+.toast{cursor: pointer;z-index: 1000;}
+#avisos_pdv {
+    text-align: center;
+    color: red;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    height: 26px;
+    margin-top: -18px;
+}
+.rodape_total_pdv {
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    padding: 10px;
+    background-color: grey;
+    color: white;
+
+}
+#pago_pdv {
+
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+
+}
+.produtos_comprados {
+    width: 100%;
+    height: 547px;
+    overflow: auto;
+}
+.botao_pdv {
+
+    width: 100%;
+    margin-bottom: 7px;
+    font-size: 0.7rem;
+
+}
+.valor_total_pdv {
+
+    text-align: center;
+
+}
+#total_pdv {
+
+    font-size: 4rem;
+    color: orange;
+    font-weight: bold;
+    line-height: 4rem;
+
+}
+.rodape_quantidade_pdv {
+
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    background-color: grey;
+    left: 0;
+    padding: 5px;
+    border-radius: 0 0 2px 2px;
+    color: white;
+
+}
+.item_info_container {
+
+    height: 265px;
+
+}
+#view_item_pdv {
+
+    height: 150px;
+    overflow: hidden;
+
+}
+.pdv_rigth_side {
+
+    position: relative;
+    height: 647px;
+    padding: 7px;
+    background-color: #d8d8d8;
+    background-image: url("/conexcje/static/images/backpdv.jpg");
+    background-size: auto 100%;
+
+}
+#codigo_item_pdv {
+
+    text-align: center;
+
+}
+#descricao_item_pdv {
+
+    background-color: white;
+    padding: 10px;
+    height: 83px;
+    font-size: 0.7rem;
+    overflow: auto;
+    box-shadow: 0px 0px 5px inset;
+
+}
+.modal-dialog {
+
+    max-width: 800px;
+    margin: 1.75rem auto;
+
+}
+.phantersqllistas-caixa_pesquisa.row {
+    margin: 0;
+}
+#view_modal_item_pdv {
+    height: 200px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: grey;
+    margin-bottom: 10px;
+
+}
+.mensage_ver_contato{
+    transition: height 2s;
+}
+.mensagem_ver_contato.hide {
+    height: 24px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+    transition: height 2s;
+}
+.mensagem_ver_contato.show {
+    transition: height 2s;
+}
+.operacao_pdv_container {
+    text-align: center;
+    font-size: 0.7rem;
+    background: #383333;
+    color: #ababab;
+}
+#view_item_pdv {
+    height: 150px;
+    overflow: hidden;
+    background-image: url("/conexcje/static/images/aguardando.png");
+    background-size: 100% auto;
+    background-position: center;
 }

@@ -283,8 +283,11 @@ class PhanterSqlListas():
                             attr=z[1]
                             if self._funcao_campo:
                                 if isinstance(self._funcao_campo, dict):
+                                    print "passou aqui %s" %campo
                                     if campo in self._funcao_campo:
+                                        print "opaaa"
                                         valor_campo=self._funcao_campo[campo](x[campo])
+                                        print self._funcao_campo[campo]
                                     else:
                                         valor_campo=x[campo]
                                 else:

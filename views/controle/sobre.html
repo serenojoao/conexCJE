@@ -1,0 +1,21 @@
+{{extend 'layout.html'}}
+<div class="header_pagina">
+  <h1 class="titulo_pagina">{{=titulo}}</h1>
+  <h2 class="subtitulo_pagina">{{=subtitulo}}</h2>
+  <div class="comandos_pagina_container">
+  {{=html_comandos}}
+  </div>
+</div>
+<hr>
+{{=html}}
+  <div class="row form-group">
+    <div class="col-12">
+      <label for="produtos_descricao">Pode ser utilizado HTML</label>
+      {{=form.custom.widget.html}}
+    </div>
+  </div>
+
+  <div class="botao_submit">
+    {{=form.custom.submit}}
+  </div>
+

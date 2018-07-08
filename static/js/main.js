@@ -41,5 +41,13 @@
 				resetForms: true,
 				side: 'right'
 			});
+	// pdv
+	 $('#cod_barras_pdv').on("keyup", function(e){
+	 	console.log('opa')
+	 	if(e.keyCode == 13){
+	 		alert('enter')
+	 	}
+
+	 });
 
 })(jQuery);

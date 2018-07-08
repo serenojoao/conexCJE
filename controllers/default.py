@@ -38,20 +38,35 @@ def sobre_nos():
     html=""
     titulo="SOBRE NÓS"
     subtitulo="Conheça um pouco sobre nossa empresa"
+    link_restrito=""
+    if auth.user:
+        if auth.has_membership("administrador"):
+            link_restrito = A(DIV(ICONE_CONFIGURACOES, _class="botao_menu_pagina"),_href=URL('controle', 'sobre'), _title="Editar informações SOBRE NÓS")
+
     html_comandos=DIV(
         A(DIV(ICONE_VOLTAR, _class="botao_menu_pagina"), _href=URL('default', 'index'), _title="voltar"),
+        link_restrito,
         _class="comandos_main_container")
     html=DIV("Aguardando informações serem adicionadas")
     return locals()
 
 def contato():
+    
     html=""
     titulo="CONTATO"
     subtitulo="Entre em contato conosco, tire suas dúvidas."
+    link_restrito=""
+    if auth.user:
+        if auth.has_membership("administrador"):
+            link_restrito = A(DIV(ICONE_CONTATO, _class="botao_menu_pagina"),_href=URL('controle', 'contato'), _title="Ver mensagens recebidas")
+
     html_comandos=DIV(
         A(DIV(ICONE_VOLTAR, _class="botao_menu_pagina"), _href=URL('default', 'index'), _title="voltar"),
+        link_restrito,
         _class="comandos_main_container")
-    form=SQLFORM(db.contato)
+    form=SQLFORM(db.contato, fields=["nome", "email", "mensagem"])
+    if form.process().accepted:
+        response.flash="Mensagem Envida!"
     html=DIV(form, _class='container_formulario_generico')
     return locals()
 

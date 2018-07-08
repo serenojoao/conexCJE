@@ -4,12 +4,12 @@ def index():
     html=DIV(DIV(H1('Plugin PhanterImages. Seu álbum virtual.')),DIV(BUTTON("INICIAR UPLOADS", _class='btn btn-default', _onclick='window.location="%s"' %URL('upload_images'))), _class='background-teste')
     return locals()
 
-#@auth.requires_membership('uploader')
+@auth.requires_membership('funcionario')
 def upload_images():
     html=MODELS_PHANTERIMAGES_EXAMPLE
     return dict(html=html)
 
-#@auth.requires_membership('uploader')
+@auth.requires_membership('funcionario')
 def echo_phanterimages():
     echo_response=MODELS_PHANTERIMAGES_EXAMPLE.echoPhanterImages()
 
