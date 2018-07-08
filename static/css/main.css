@@ -175,6 +175,10 @@ fieldset[disabled=""] > input {
 .preco {
     text-align: center;
     font-size: 2rem;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 15px;
 }
 .card-rotulo {
 
@@ -245,9 +249,9 @@ fieldset[disabled=""] > input {
     text-align: center;
 }
 .card-body {
-
     background: #d8f3d8;
-
+    position: relative;
+    padding-bottom: 103px;
 }
 .avisos{
     text-align: center;
@@ -529,4 +533,7 @@ overflow: hidden; }
     background-image: url("/conexcje/static/images/aguardando.png");
     background-size: 100% auto;
     background-position: center;
+}
+.main_user_container {
+    min-height: 375px;
 }

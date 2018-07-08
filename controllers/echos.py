@@ -90,7 +90,7 @@ def pdv():
                             print "cliente %s" %q_cliente.id
                             id_venda = db.vendas.insert(vendedor=q_vendedor.id, cliente=q_cliente.id)
                         else:
-                            return "$(\".toast\").text(\"Cliente não Encontrado\").fadeIn();"
+                            return "$(\".toast\").text(\"Cliente não Encontrado\").fadeIn(); fechar_toast_depois();"
                     q_venda_aberta = db((db.vendas.id==id_venda)).select().first()
                     url_ajax = URL('echos', 'pdv', args=['adicionar-produtos', id_venda])
                     script = '$("#quant_pdv").removeAttr("disabled").val("1");'
@@ -110,7 +110,7 @@ def pdv():
                     script+= '$("#botao_imprimir_modal").attr("href", "%s");' %URL('servicos', 'imprimir_nota', args=[id_venda])
                     return script
             else:
-                return "$(\".toast\").text(\"Vendedor não Encontrado\").fadeIn();$(\"#pop\")[0].play();"
+                return "$(\".toast\").text(\"Vendedor não Encontrado\").fadeIn(); fechar_toast_depois(); $(\"#pop\")[0].play();"
         elif request.args(0)=="adicionar-produtos" and request.args(1) and request.args(2) and request.args(3) and request.args(4) and request.args(5):
             cod_barra_prod =  request.args(2)
             vendas = request.args(1)
@@ -166,9 +166,9 @@ def pdv():
                         script+= '$("#quant_rod_pdv").text("%s");' %(int(request.args(4))+1)
                         return script
                 else:
-                    return "$(\".toast\").text(\"Produto não localizado\").fadeIn(); $(\"#pop\")[0].play();"
+                    return "$(\".toast\").text(\"Produto não localizado\").fadeIn(); fechar_toast_depois(); $(\"#pop\")[0].play();"
             else:
-                return "$(\".toast\").text(\"Venda não localizada\").fadeIn();"
+                return "$(\".toast\").text(\"Venda não localizada\").fadeIn(); fechar_toast_depois();"
         elif request.args(0)=="finalizar" and request.args(1) and request.args(2) and request.args(3) and request.args(4) and request.args(5):
             vendas = request.args(1)
             total =  float(request.args(2))
@@ -195,7 +195,7 @@ def pdv():
 
 
             else:
-                return "$(\".toast\").text(\"Venda não localizada\").fadeIn();"
+                return "$(\".toast\").text(\"Venda não localizada\").fadeIn(); fechar_toast_depois();"
 
 @auth.requires_membership('funcionario')
 def cancelar_venda():
@@ -216,7 +216,7 @@ def deletar_mensagem():
         if q_mensagem:
             meu_set.delete()
             db.commit()
-            return '$(".toast").text("Contato Deletado!"); $(".toast").fadeIn();deletado_sucesso();'
+            return '$(".toast").text("Contato Deletado!"); $(".toast").fadeIn(); fechar_toast_depois();deletado_sucesso();'
 
 @auth.requires_membership('administrador')
 def mensagem_vista():

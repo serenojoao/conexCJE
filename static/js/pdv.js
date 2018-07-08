@@ -142,3 +142,9 @@ $('#confirmar_cancelamento').on('click', function(){
 $("#btn_cancelar_pdv").on("click", function(){
 	$("#modal_cancelar").modal("show");
 });
+function fechar_toast_depois(){
+    var fechar = function local(){
+      $(".toast").fadeOut();
+    }
+    setTimeout(fechar, 3000);
+  }
