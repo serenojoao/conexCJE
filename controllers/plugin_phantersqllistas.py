@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Autor: PhanterJR
 
 @auth.requires_membership('funcionario')
 def echo_phantersqllistas():

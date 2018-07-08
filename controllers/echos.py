@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# Autor: PhanterJR
+
 from em_reais import em_reais
 from nota_nao_fiscal_txt import CupomNaoFiscal
 import json
@@ -206,7 +208,6 @@ def cancelar_venda():
             return "window.location=\"/conexcje/servicos/pdv/avulso\";"
 
 
-
 @auth.requires_membership('administrador')
 def deletar_mensagem():
     if request.args(0):
@@ -216,6 +217,7 @@ def deletar_mensagem():
             meu_set.delete()
             db.commit()
             return '$(".toast").text("Contato Deletado!"); $(".toast").fadeIn();deletado_sucesso();'
+
 @auth.requires_membership('administrador')
 def mensagem_vista():
     if request.args(0):

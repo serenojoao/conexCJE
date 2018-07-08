@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Autor: PhanterJR
 
 def index():
     html=DIV(DIV(H1('Plugin PhanterImages. Seu álbum virtual.')),DIV(BUTTON("INICIAR UPLOADS", _class='btn btn-default', _onclick='window.location="%s"' %URL('upload_images'))), _class='background-teste')
