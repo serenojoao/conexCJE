@@ -100,7 +100,10 @@
       </div></a></div>
         </div>
       </div>
+        <div class="main_user_container">
           {{include}}
+        </div>
+
     {{else:}}
 
     <div class="container main_container">
@@ -134,10 +137,17 @@
     
     {{if response.flash:}}
     <script type="text/javascript">
+      function fechar_toast_depois(){
+        var fechar = function local(){
+          $(".toast").fadeOut();
+        }
+        setTimeout(fechar, 3000);
+      }
       $(".toast").slideToggle();
       $(".toast").on("click", function(){
         $(this).fadeOut();
       })
+      fechar_toast_depois()
     </script>
     {{pass}}
 
